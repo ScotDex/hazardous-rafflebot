@@ -116,6 +116,22 @@ export class RaffleCommands extends AbstractCommand {
                 return;
             }
 
+            const guild = interaction.client.guilds.cache.get(raffle.guildId);
+            if (guild) {
+                const channel = <TextChannel>guild.channels.cache.get(raffle.channelId);
+                if (channel) {
+                    const message = raffle.messageId ? await channel.messages.fetch(raffle.messageId).catch(() => null) : null;
+                    if (raffle.messageId && message) {
+                        try {
+                            await message.delete();
+                        }
+                        catch (error) {
+                            console.error(`Could not delete message for raffle ${raffle.raffleId}:`, error);
+                        }
+                    }
+                }
+            }
+
             // draw the raffle
             await raffle.deleteOne({ raffleId: raffleId, guildId: interaction.guildId, channelId: interaction.channelId });
 
