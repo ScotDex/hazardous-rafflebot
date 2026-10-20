@@ -1,0 +1,13 @@
+node_modules
+dist
+coverage
+.git
+.github
+.idea
+data
+logs
+*.log
+.env
+
+# Never bake a developer's real configuration into an image.
+config/marketbot.ini

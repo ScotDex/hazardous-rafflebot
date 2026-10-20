@@ -1,7 +1,24 @@
-.DS_Store
-node_modules
-dist
-mongo-data
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Node/Npm files
+npm-debug.log*
+node_modules/
+
+# Build files & test artifacts
+coverage/
+dist/
+
+# Local application files
+config/marketbot.ini
+data/typeIDs.yaml
+data/*.png
+data/*.json
+data/*.txt
+logs/
 .env
-.idea
-config.json
+
+# System files
+*.db
